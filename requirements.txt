@@ -1,5 +1,4 @@
-```text
-   streamlit
-   tensorflow-cpu
-   pillow
-   numpy
+streamlit
+tensorflow-cpu==2.15.0
+pillow
+numpy<2.0.0
