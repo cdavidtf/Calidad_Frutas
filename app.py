@@ -16,6 +16,21 @@ st.sidebar.title("📌 Acerca del Proyecto")
 st.sidebar.write("Este sistema utiliza una red neuronal profunda basada en **MobileNetV2** mediante *Transfer Learning* y *Fine-Tuning* para clasificar 18 tipos de frutas y verduras en estados óptimos o de descomposición.")
 st.sidebar.info("🎯 Precisión del modelo en pruebas: ~90%")
 
+# Poner esto en la sección de la barra lateral (sidebar)
+with st.sidebar.expander("🍎 Ver frutas y verduras soportadas"):
+    st.write("""
+    **Este sistema puede analizar:**
+    * 🍎 Manzanas (Frescas y Podridas)
+    * 🍌 Plátanos (Frescos y Podridos)
+    * 🍊 Naranjas (Frescas y Podridas)
+    * 🍅 Tomates (Frescos y Podridos)
+    * 🥔 Papas (Frescas y Podridas)
+    * 🥒 Pepinos (Frescos y Podridos)
+    * 🫑 Pimientos (Frescos y Podridos)
+    * 🌱 Okra / Quimbombó (Fresca y Podrida)
+    * 🥒 Melón Amargo (Fresco y Podrido)
+    """)
+
 # 1. Cargar el modelo (con caché para que cargue instantáneo la segunda vez)
 
 # 1. Cargar el modelo (con caché para que cargue instantáneo la segunda vez)
@@ -84,6 +99,7 @@ else:
         st.markdown("---")
         st.subheader("📊 Diagnóstico del Sistema:")
 
+     
         # Si dice "rotten" (podrido) lo pintamos en rojo, si es "fresh" en verde
         if "podrida" in resultado.lower() or "podrido" in resultado.lower():
             st.error(f"## **{resultado.upper()}**")
