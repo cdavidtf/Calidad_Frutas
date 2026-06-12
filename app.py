@@ -3,6 +3,7 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image
 import os
+import gdown
 
 # Configuración de la pestaña del navegador
 st.set_page_config(page_title="Detector de Frutas IA", page_icon="🍎", layout="centered")
@@ -17,14 +18,17 @@ st.sidebar.info("🎯 Precisión del modelo en pruebas: ~90%")
 
 # 1. Cargar el modelo (con caché para que cargue instantáneo la segunda vez)
 @st.cache_resource
-def cargar_modelo():
-    ruta = 'modelo_frutas_perfecto.keras'
-    if os.path.exists(ruta):
-        return tf.keras.models.load_model(ruta)
-    return None
+def load_my_model():
+    if not os.path.exists(MODEL_PATH):
+        with st.spinner('Descargando el modelo de Inteligencia Artificial desde Google Drive... Esto toma unos segundos.'):
+            # Enlace limpio directo para descargas de Drive
+            url = 'https://drive.google.com/uc?id=1u2S_yVDigDwl9bbEoEKTr6VVymsJs1zn'
+            gdown.download(url, MODEL_PATH, quiet=False)
+    return tf.keras.models.load_model(MODEL_PATH)
 
+# Activamos el cerebro de la IA
+model = load_my_model()
 
-model = cargar_modelo()
 
 # 2. Lista de tus 18 clases exactas (¡Asegúrate de que coincida con tus carpetas!)
 nombres_clases = [
