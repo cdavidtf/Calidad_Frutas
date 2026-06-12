@@ -17,6 +17,10 @@ st.sidebar.write("Este sistema utiliza una red neuronal profunda basada en **Mob
 st.sidebar.info("🎯 Precisión del modelo en pruebas: ~90%")
 
 # 1. Cargar el modelo (con caché para que cargue instantáneo la segunda vez)
+
+# 1. Cargar el modelo (con caché para que cargue instantáneo la segunda vez)
+MODEL_PATH = 'modelo_frutas_perfecto.keras'
+
 @st.cache_resource
 def load_my_model():
     if not os.path.exists(MODEL_PATH):
